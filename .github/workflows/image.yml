@@ -16,7 +16,7 @@ jobs:
         name: Prepare
         id: prep
         run: |
-          DOCKER_IMAGE=keshavdv/unifi-cam-proxy
+          DOCKER_IMAGE=evanjd/unifi-cam-proxy
           VERSION=dev
           if [[ $GITHUB_REF == refs/tags/* ]]; then
             VERSION=${GITHUB_REF#refs/tags/v}
@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v6,linux/arm/v7
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.prep.outputs.tags }}
           labels: |
